@@ -1,34 +1,44 @@
+import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
+import { getMovies, addToWatchlist } from "../services/api";
 
 function Movies() {
-  const movies = [
-    {
-      id: 1,
-      title: "Interstellar",
-      genre: "Sci-Fi",
-      director: "Christopher Nolan",
-      year: 2014,
-      review: "A visually stunning space epic.",
-      rating: 9
-    },
-    {
-      id: 2,
-      title: "Inception",
-      genre: "Sci-Fi / Thriller",
-      director: "Christopher Nolan",
-      year: 2010,
-      review: "A mind-bending story about dreams within dreams.",
-      rating: 8
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadMovies() {
+      try {
+        const data = await getMovies();
+        setMovies(data);
+      } catch (err) {
+        setError("Could not load movies.");
+        console.error(err);
+      }
     }
-  ];
+
+    loadMovies();
+  }, []);
+
+
+  async function handleAddToWatchlist(movie) {
+    try {
+      await addToWatchlist(movie);
+      alert(`${movie.title} added to watchlist`);
+    } catch (err) {
+      console.error(err);
+      alert("Could not add movie to watchlist.");
+    }
+  }
 
   return (
     <main>
-      <h1>Movies</h1>
-
+      <h1>Browse Movies</h1>
       <p>Explore movies and add them to your watchlist.</p>
 
-      <MovieList movies={movies} />
+      {error && <p>{error}</p>}
+
+      <MovieList movies={movies} onAddToWatchlist={handleAddToWatchlist} />
     </main>
   );
 }
