@@ -5,6 +5,9 @@ import { getWatchlist, deleteFromWatchlist } from "../services/api";
 
 function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
+  const [message, setMessage] = useState("");
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+
 
   useEffect(() => {
     async function loadWatchlist() {
@@ -22,13 +25,27 @@ function Watchlist() {
 
   async function handleRemove(movieId) {
   try {
-    await deleteFromWatchlist(movieId);
+      setSelectedMovieId(movieId);
+      setMessage("Movie removed from watchlist");
 
-    setWatchlist((prev) =>
-      prev.filter((movie) => movie.id !== movieId)
-    );
+     setTimeout(async () => {
+      try {
+        await deleteFromWatchlist(movieId);
+
+        setWatchlist((prev) =>
+          prev.filter((movie) => movie.id !== movieId)
+        );
+
+        setMessage("");
+        setSelectedMovieId(null);
+      } catch (err) {
+        console.error("Failed to delete movie", err);
+        setMessage("Failed to remove movie");
+      }
+    }, 800);
   } catch (err) {
     console.error("Failed to delete movie", err);
+    setMessage("Failed to remove movie");
   }
 }
 
@@ -46,6 +63,7 @@ function Watchlist() {
               key={movie.id}
               movie={movie}
               onRemove={handleRemove}
+              message={selectedMovieId === movie.id ? message : ""}
             />
           ))}
         </div>

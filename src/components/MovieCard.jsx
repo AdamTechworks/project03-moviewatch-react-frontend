@@ -1,6 +1,8 @@
-function MovieCard({ movie, onAddToWatchlist, onRemove }) {
+function MovieCard({ movie, onAddToWatchlist, onRemove, message }) {
   return (
     <div className="card">
+        {message && <p className="success-message">{message}</p>}
+
         <h2>{movie.title}</h2>
 
         <p><strong>Genre:</strong> {movie.genre}</p>
@@ -18,10 +20,10 @@ function MovieCard({ movie, onAddToWatchlist, onRemove }) {
         )}
         
         {onRemove && (
-            <button onClick={() => onRemove(movie.id)}>
-            Remove Movie
-            </button>
-        )}
+        <button onClick={() => onRemove(movie.id)}>
+          Remove Movie
+        </button>
+      )}
     </div>
   );
 }
