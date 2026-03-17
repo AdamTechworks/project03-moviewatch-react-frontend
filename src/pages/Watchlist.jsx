@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import { getWatchlist } from "../services/api";
+import { getWatchlist, deleteFromWatchlist } from "../services/api";
 
 
 function Watchlist() {
@@ -16,8 +16,22 @@ function Watchlist() {
       }
     }
   
+  
     loadWatchlist();
   }, []);
+
+  async function handleRemove(movieId) {
+  try {
+    await deleteFromWatchlist(movieId);
+
+    setWatchlist((prev) =>
+      prev.filter((movie) => movie.id !== movieId)
+    );
+  } catch (err) {
+    console.error("Failed to delete movie", err);
+  }
+}
+
 
   return (
     <main>
@@ -28,12 +42,16 @@ function Watchlist() {
       ) : (
         <div className="movie-list">
           {watchlist.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              onRemove={handleRemove}
+            />
           ))}
         </div>
-          )}
+        )}
     </main>
-  );
-}
-
+    );
+  }
+  
 export default Watchlist;

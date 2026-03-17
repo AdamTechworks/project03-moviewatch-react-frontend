@@ -31,3 +31,15 @@ export async function addToWatchlist(movie) {
 
   return response.json();
 }
+
+export async function deleteFromWatchlist(id) {
+  const response = await fetch(`http://localhost:3000/watchlist/${id}`, {
+    method: "DELETE"
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete movie");
+  }
+
+  return true;
+}

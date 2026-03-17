@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
-import { getMovies, addToWatchlist } from "../services/api";
+import { getMovies, addToWatchlist, getWatchlist } from "../services/api";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
@@ -26,8 +26,19 @@ function Movies() {
   }, []);
 
 
-  async function handleAddToWatchlist(movie) {
+    async function handleAddToWatchlist(movie) {
     try {
+      const watchlist = await getWatchlist();
+
+      const alreadyAdded = watchlist.some(
+        (item) => item.title === movie.title
+      );
+
+      if (alreadyAdded) {
+        setMessage(`${movie.title} is already in your watchlist.`);
+        return;
+      }
+
       await addToWatchlist(movie);
       setMessage(`${movie.title} added to watchlist`);
     } catch (err) {
@@ -42,7 +53,7 @@ function Movies() {
       <p>Explore movies and add them to your watchlist.</p>
       {loading && <p>Loading movies...</p>}
       {error && <p>{error}</p>}
-      
+
       {message && <p className="success-message">{message}</p>}
      {!loading && !error && (
         <MovieList movies={movies} onAddToWatchlist={handleAddToWatchlist} />
