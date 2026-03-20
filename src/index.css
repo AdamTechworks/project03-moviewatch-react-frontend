@@ -33,7 +33,7 @@ h2 {
 }
 
 p {
-  line-height: 1.6;
+  line-height: 2.5;
   margin-bottom: 1rem;
   color: #d1d5db;
 }
@@ -58,21 +58,8 @@ button:hover {
 
 /* Simple card style (for movie cards) */
 
-.card {
-  background-color: #1f2937;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #374151;
-  transition: transform 0.15s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-}
-
 .success-message {
-  background-color: #a2dbaf;
+  background-color: #22c55e;
   color: #19642a;
   padding: 10px;
   border-radius: 5px;
@@ -134,14 +121,14 @@ button:hover {
 
 .card button {
   background-color: #22c55e;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 /* Remove button */
 
 .card button.remove-btn {
   background-color: #b91c1c;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 
@@ -172,6 +159,25 @@ button:hover {
   display: none;
 }
 
+.carousel-btn {
+  background-color: rgba(20, 20, 20, 0.85);
+  color: white;
+  border: 1px solid #333;
+  width: 48px;
+  height: 120px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(40, 40, 40, 0.95);
+  transform: scale(1.03);
+}
+
 /* Watchlist Grid */
 
 .watchlist-grid {
@@ -187,7 +193,7 @@ button:hover {
 .movie-poster {
   width: 100%;
   height: 150px;
- background: linear-gradient(to right, #374151, #1f2937);
+  background: linear-gradient(to right, #374151, #1f2937);
   color: white;
   display: flex;
   align-items: center;

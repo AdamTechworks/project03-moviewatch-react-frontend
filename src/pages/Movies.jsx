@@ -60,12 +60,23 @@ function Movies() {
 
       
      {!loading && !error && (
-        <MovieList
-          movies={movies}
-          onAddToWatchlist={handleAddToWatchlist}
-          message={message}
-          selectedMovieId={selectedMovieId}
-        />
+         <>
+      {["Sci-Fi", "Action", "Drama", "Comedy", "Horror", "Fantasy"].map((genre) => {
+        const genreMovies = movies.filter((movie) => movie.genre === genre);
+
+        return (
+        <section key={genre} className="genre-row">
+          <h2>{genre}</h2>
+            <MovieList
+              movies={genreMovies}
+              onAddToWatchlist={handleAddToWatchlist}
+              message={message}
+              selectedMovieId={selectedMovieId}
+            />
+          </section>
+           );
+        })}
+       </>
       )}
     </main>
   );

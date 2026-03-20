@@ -7,7 +7,8 @@ function MovieList({ movies, onAddToWatchlist, message, selectedMovieId }) {
 
   return (
     <div className="carousel">
-      <button onClick={() => ref.current.scrollLeft -= 300}>◀</button>
+      <button className="carousel-btn"
+         onClick={() => ref.current && (ref.current.scrollLeft -= 300)}>◀</button>
 
     <div className="movie-list" ref={ref}>
       {movies.map((movie) => (
@@ -20,7 +21,8 @@ function MovieList({ movies, onAddToWatchlist, message, selectedMovieId }) {
       ))}
     </div>
     
-    <button onClick={() => ref.current.scrollLeft += 300}>▶</button>
+    <button className="carousel-btn" 
+        onClick={() => ref.current && (ref.current.scrollLeft += 300)}>▶</button>
     </div>
   );
 }
