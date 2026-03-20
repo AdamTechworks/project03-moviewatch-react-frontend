@@ -345,15 +345,6 @@
       "rating": 8
     },
     {
-      "id": "36",
-      "title": "Willow",
-      "genre": "Fantasy",
-      "director": "Ron Howard",
-      "year": 1988,
-      "review": "A humble farmer is drawn into a dangerous quest. He must protect a special child from evil forces. The film is a classic fantasy adventure.",
-      "rating": 7
-    },
-    {
       "id": "1",
       "title": "Interstellar",
       "genre": "Sci-Fi",
@@ -415,6 +406,96 @@
       "year": 1994,
       "review": "A simple man experiences extraordinary moments in history. His kindness and perspective shape those around him. The film blends humor, emotion, and nostalgia.",
       "rating": 9
+    },
+    {
+      "id": "15",
+      "title": "Whiplash",
+      "genre": "Drama",
+      "director": "Damien Chazelle",
+      "year": 2014,
+      "review": "A young drummer strives for greatness under a demanding teacher. The pressure pushes him to extremes. The film explores ambition, obsession, and sacrifice.",
+      "rating": 9
+    },
+    {
+      "id": "16",
+      "title": "The Social Network",
+      "genre": "Drama",
+      "director": "David Fincher",
+      "year": 2010,
+      "review": "The rise of Facebook reveals ambition and betrayal. Friendships are tested as success grows. The film captures the cost of innovation and power.",
+      "rating": 8
+    },
+    {
+      "id": "19",
+      "title": "Superbad",
+      "genre": "Comedy",
+      "director": "Greg Mottola",
+      "year": 2007,
+      "review": "Two friends try to make their last night unforgettable. Their plans quickly spiral into chaos. The film mixes crude humor with genuine friendship.",
+      "rating": 7
+    },
+    {
+      "id": "20",
+      "title": "The Hangover",
+      "genre": "Comedy",
+      "director": "Todd Phillips",
+      "year": 2009,
+      "review": "A bachelor party in Vegas goes completely off the rails. The group must retrace their steps to find the groom. The film is unpredictable and hilarious.",
+      "rating": 8
+    },
+    {
+      "id": "21",
+      "title": "Step Brothers",
+      "genre": "Comedy",
+      "director": "Adam McKay",
+      "year": 2008,
+      "review": "Two grown men are forced to live together as stepbrothers. Their immaturity creates endless chaos. The film thrives on absurd humor and ridiculous situations.",
+      "rating": 7
+    },
+    {
+      "id": "3",
+      "title": "Dune",
+      "genre": "Sci-Fi",
+      "director": "Denis Villeneuve",
+      "year": 2021,
+      "review": "A visually stunning adaptation of a desert planet epic. Paul Atreides must navigate politics, prophecy, and survival. The film delivers massive scale and immersive world-building.",
+      "rating": 8
+    },
+    {
+      "id": "4",
+      "title": "The Matrix",
+      "genre": "Sci-Fi",
+      "director": "Wachowski Sisters",
+      "year": 1999,
+      "review": "A hacker discovers that reality is a simulation controlled by machines. He joins a rebellion to free humanity from illusion. The film redefined action and sci-fi storytelling.",
+      "rating": 10
+    },
+    {
+      "id": "2",
+      "title": "Inception",
+      "genre": "Sci-Fi",
+      "director": "Christopher Nolan",
+      "year": 2010,
+      "review": "A mind-bending story about dreams within dreams. A skilled thief enters people's subconscious to steal secrets. As reality blurs, the mission becomes increasingly dangerous.",
+      "rating": 8
+    },
+    {
+      "id": "5",
+      "title": "Blade Runner 2049",
+      "genre": "Sci-Fi",
+      "director": "Denis Villeneuve",
+      "year": 2017,
+      "review": "A futuristic detective uncovers a mystery that could change society. As he digs deeper, he questions identity and memory. The film is slow, atmospheric, and visually breathtaking.",
+      "rating": 9
+    },
+    {
+      "id": "6",
+      "title": "Avatar",
+      "genre": "Sci-Fi",
+      "director": "James Cameron",
+      "year": 2009,
+      "review": "A soldier enters a breathtaking alien world through a remote body. As he connects with the planet’s people, his loyalty is tested. The film is known for its groundbreaking visuals.",
+      "rating": 8
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

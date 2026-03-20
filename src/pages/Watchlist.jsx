@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
+import MovieList from "../components/MovieList";
 import { getWatchlist, deleteFromWatchlist } from "../services/api";
 
 
@@ -20,8 +20,9 @@ function Watchlist() {
     }
   
   
-    loadWatchlist();
-  }, []);
+        loadWatchlist();
+      },
+    []);
 
   async function handleRemove(movieId) {
   try {
@@ -49,6 +50,23 @@ function Watchlist() {
   }
 }
 
+  const genres = ["Sci-Fi", "Action", "Drama", "Comedy", "Horror", "Fantasy"];
+
+const groupedWatchlist = genres.map((genre) => {
+  const genreMovies = watchlist.filter(
+    (movie) => movie.genre === genre
+  );
+
+  const chunks = [];
+  for (let i = 0; i < genreMovies.length; i += 6) {
+    chunks.push(genreMovies.slice(i, i + 6));
+  }
+
+  return {
+    genre,
+    chunks
+  };
+});
 
   return (
     <main>
@@ -56,20 +74,29 @@ function Watchlist() {
 
       {watchlist.length === 0 ? (
         <p>No movies in your watchlist yet.</p>
-      ) : (
-        <div className="watchlist-grid">
-          {watchlist.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onRemove={handleRemove}
-              message={selectedMovieId === movie.id ? message : ""}
-            />
-          ))}
-        </div>
-        )}
+        ) : (
+       groupedWatchlist.map(({ genre, chunks }) => {
+        if (chunks.length === 0) return null;
+
+        return (
+          <section key={genre} className="genre-row">
+            <h2>{genre}</h2>
+
+            {chunks.map((group, index) => (
+              <MovieList
+                key={index}
+                movies={group}
+                onRemove={handleRemove}
+                message={message}
+                selectedMovieId={selectedMovieId}
+              />
+             ))}
+          </section>
+          );
+        })
+      )}
     </main>
-    );
-  }
+  );
+}
   
 export default Watchlist;
