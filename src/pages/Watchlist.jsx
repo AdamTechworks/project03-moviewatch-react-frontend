@@ -6,6 +6,7 @@ import { getWatchlist, deleteFromWatchlist } from "../services/api";
 function Watchlist() {
   const [watchlist, setWatchlist] = useState([]);
   const [message, setMessage] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState(null);
 
 
@@ -52,8 +53,15 @@ function Watchlist() {
 
   const genres = ["Sci-Fi", "Action", "Drama", "Comedy", "Horror", "Fantasy"];
 
+  const filteredWatchlist = watchlist.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.director.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.review.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
 const groupedWatchlist = genres.map((genre) => {
-  const genreMovies = watchlist.filter(
+  const genreMovies = filteredWatchlist.filter(
     (movie) => movie.genre === genre
   );
 
@@ -71,6 +79,14 @@ const groupedWatchlist = genres.map((genre) => {
   return (
     <main>
       <h1>My Watchlist</h1>
+
+      <input
+        type="text"
+        placeholder="Search watchlist..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
 
       {watchlist.length === 0 ? (
         <p>No movies in your watchlist yet.</p>

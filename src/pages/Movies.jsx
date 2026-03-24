@@ -7,6 +7,7 @@ function Movies() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState(null);
 
   useEffect(() => {
@@ -51,6 +52,13 @@ function Movies() {
     }
   }
 
+    const filteredMovies = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      movie.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      movie.director.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      movie.review.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main>
       <h1>Browse Movies</h1>
@@ -58,11 +66,20 @@ function Movies() {
       {loading && <p>Loading movies...</p>}
       {error && <p>{error}</p>}
 
+      <input
+        type="text"
+        placeholder="Search movies..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
       
      {!loading && !error && (
          <>
       {["Sci-Fi", "Action", "Drama", "Comedy", "Horror", "Fantasy"].map((genre) => {
-        const genreMovies = movies.filter((movie) => movie.genre === genre);
+        const genreMovies = filteredMovies.filter((movie) => movie.genre === genre);
+
+        if (genreMovies.length === 0) return null;
 
         return (
         <section key={genre} className="genre-row">
