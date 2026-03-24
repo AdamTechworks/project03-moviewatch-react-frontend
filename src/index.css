@@ -14,15 +14,16 @@ body {
 /* Page layout */
 
 main {
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 2rem auto;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
 }
 
 /* Headings */
 
 h1 {
-  font-size: 2rem;
+  text-align: center;
+  font-size: 3.2rem;
   margin-bottom: 1rem;
   color: #facc15;
 }
@@ -33,7 +34,9 @@ h2 {
 }
 
 p {
+  text-align: center;
   line-height: 2.5;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #d1d5db;
 }
@@ -70,14 +73,14 @@ button:hover {
 
 .card {
   min-width: 310px;
-  max-width: 310px;
-  flex: 0 0 auto;
+  flex: 0 0 310px;
   background: linear-gradient(180deg, #1b2533 0%, #111827 100%);
   border: 1px solid #2b3648;
   border-radius: 14px;
   padding: 1.1rem;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  scroll-snap-align: start;
 }
 
 .card:hover {
@@ -153,6 +156,8 @@ button:hover {
   padding: 1.25rem 0.5rem;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
 .movie-list::-webkit-scrollbar {
@@ -249,4 +254,25 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/*auto complete search suggestions*/
+
+.autocomplete {
+  max-width: 500px;
+  margin: -1rem auto 1rem auto;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.autocomplete-item {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  color: white;
+}
+
+.autocomplete-item:hover {
+  background-color: #374151;
 }

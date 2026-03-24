@@ -73,6 +73,28 @@ function Movies() {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-bar"
       />
+
+      {searchTerm &&
+      filteredMovies.some((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+        ) && (
+        <div className="autocomplete">
+          {filteredMovies
+            .filter((movie) =>
+              movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .slice(0, 5)
+            .map((movie) => (
+              <div
+                key={movie.id}
+                className="autocomplete-item"
+                onClick={() => setSearchTerm(movie.title)}
+              >
+                {movie.title} ({movie.genre})
+              </div>
+            ))}
+      </div>
+  )}
       
      {!loading && !error && (
          <>
