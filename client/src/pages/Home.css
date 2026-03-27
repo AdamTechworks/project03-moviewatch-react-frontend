@@ -1,0 +1,100 @@
+/* HERO BANNER */
+
+.hero {
+  padding: 3rem 2rem;
+  background: linear-gradient(to right, #111827, #1f2937);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  animation: fadeSlide 0.8s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 600px;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* HOME ROWS */
+
+.home-row {
+  margin-bottom: 2rem;
+}
+
+.home-row h2 {
+  margin-bottom: 1rem;
+}
+
+/* CTA */
+
+.home-cta {
+  text-align: center;
+  padding: 2.5rem;
+  background-color: #1f2937;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.home-cta h2 {
+  margin-bottom: 0.5rem;
+}
+
+.home-cta p {
+  margin-bottom: 1rem;
+  color: #9ca3af;
+}
+
+.recommended-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .recommended-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .recommended-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recommended-card {
+  background: linear-gradient(180deg, #1b2533 0%, #111827 100%);
+  border: 1px solid #2b3648;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.recommended-card h3 {
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.recommended-card p {
+  color: #d1d5db;
+  margin-bottom: 0.5rem;
+}
